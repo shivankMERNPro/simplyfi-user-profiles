@@ -19,6 +19,7 @@ import UserCard from "../components/userComponents/UserCard";
 import UserForm from "../components/userComponents/EditUserForm";
 import UserSearchForm from "../components/userComponents/UserSearchForm";
 import UserCardSkeleton from "../components/skeletons/UserCardSkeleton";
+import UserFormSkeleton from "../components/skeletons/UserFormSkeleton.jsx";
 
 const UserContainer = () => {
   const dispatch = useDispatch();
@@ -125,7 +126,14 @@ const UserContainer = () => {
   //---------------------------------
   // Loading state
   //---------------------------------
-  if (isFetching || isLoading) return <UserCardSkeleton />;
+  if (isFetching || isLoading) {
+    return (
+      <div className="p-5">
+        <UserFormSkeleton />
+        <UserCardSkeleton />
+      </div>
+    );
+  }
 
   //---------------------------------
   // No users available

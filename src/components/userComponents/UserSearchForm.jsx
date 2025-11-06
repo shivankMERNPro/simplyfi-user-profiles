@@ -3,14 +3,17 @@ import { Input, Button } from "antd";
 
 const UserSearchForm = ({ searchTerm, onChange, onSearch, onClear }) => {
   return (
-    <div className="flex flex-col sm:flex-row gap-2 items-center mb-4">
+    <div className="flex gap-2 items-center w-full mb-4">
+      {/* Input */}
       <Input
         placeholder="Search by name..."
         value={searchTerm}
         onChange={(e) => onChange(e.target.value)}
-        className="flex-1"
+        className="flex-1 min-w-0"
       />
-      <div className="flex gap-2 mt-2 sm:mt-0">
+
+      {/* Buttons */}
+      <div className="flex gap-2">
         <Button type="primary" onClick={onSearch}>
           Search
         </Button>
