@@ -1,8 +1,12 @@
 import React, { memo } from "react";
-import { Spin, Alert } from "antd";
+import { Row, Col, Alert, Empty } from "antd";
 
-// APIs Import
+// APIs
 import { useGetUserListQuery } from "../services/apiCalls/userApis";
+
+// Components
+import UserCard from "../components/userComponents/UserCard";
+import UserCardSkeleton from "../components/skeletons/UserCardSkeleton";
 
 const UserContainer = () => {
   const {
@@ -13,16 +17,12 @@ const UserContainer = () => {
     error,
   } = useGetUserListQuery();
 
-  // Loading state
-  if (isLoading || isFetching) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <Spin size="large" tip="Loading users..." />
-      </div>
-    );
+  // 🔹 Loading State
+  if (isFetching || isLoading) {
+    return <UserCardSkeleton />;
   }
 
-  // Error state
+  // 🔹 Error State
   if (isError) {
     return (
       <div className="p-6">
@@ -36,14 +36,32 @@ const UserContainer = () => {
     );
   }
 
-  // No data state
+  // 🔹 Empty State
   if (!users.length) {
     return (
-      <div className="text-center py-20 text-gray-500">No users available.</div>
+      <div className="flex justify-center items-center min-h-screen">
+        <Empty description="No users available" />
+      </div>
     );
   }
 
-  return <>Hello</>;
+  // Render User Cards
+  return (
+    <div style={{ padding: "20px" }}>
+      <Row gutter={[22, 22]} justify="start">
+        {users.map((user) => (
+          <Col xs={24} sm={12} md={8} lg={6} key={user.id}>
+            <UserCard
+              user={user}
+              onEdit={(u) => console.log("Edit →", u)}
+              onDelete={(u) => console.log("Delete →", u)}
+              onFavorite={(u) => console.log("Favorite →", u)}
+            />
+          </Col>
+        ))}
+      </Row>
+    </div>
+  );
 };
 
 export default memo(UserContainer);

@@ -4,6 +4,7 @@
 .app {
   min-height: 100vh;
   display: flex;
+  padding:10px 10px;
   flex-direction: column;
   justify-content: flex-start;
   background: var(--color-background);

@@ -4,12 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import publicRoutes from "./publicRoutes";
 import LoaderPage from "../pages/commonPages/LoaderPage";
 import NotFoundPage from "../pages/errorPages/NotFoundPage";
+import { PublicLayout } from "../containers/LayoutContainer";
 
 export default function ParentRoute() {
   return (
     <BrowserRouter>
       <Suspense fallback={<LoaderPage />}>
-        <Routes>
+        <Routes element={<PublicLayout />}>
           {publicRoutes.map(({ path, element }, index) => (
             <Route key={index} path={path} element={element} />
           ))}
