@@ -5,15 +5,13 @@ import { userListDataParser } from "../resParser/userApisDataPar";
 export const userApis = createApi({
   reducerPath: "userApis",
   baseQuery: baseQueryWithInterceptor,
-
+  keepUnusedDataFor: 3600,
+  refetchOnMountOrArgChange: false,
+  refetchOnFocus: false,
+  refetchOnReconnect: false,
   endpoints: (builder) => ({
     getUserList: builder.query({
       query: () => "/users",
-
-      // Cache data for 1 hour (3600 seconds)
-      keepUnusedDataFor: 3600,
-      refetchOnReconnect: true,
-
       transformResponse: (response) => userListDataParser(response),
     }),
   }),

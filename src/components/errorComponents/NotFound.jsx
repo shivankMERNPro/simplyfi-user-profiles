@@ -16,9 +16,9 @@ const NotFound = () => {
         <div className="nf-buttons">
           <button
             className="nf-btn nf-login"
-            onClick={() => navigate("/dashboard")}
+            onClick={() => navigate("/users")}
           >
-            Back to Dashboard
+            Back to main page
           </button>
           <button className="nf-btn nf-contact" onClick={() => navigate(-1)}>
             Previous Page

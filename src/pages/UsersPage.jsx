@@ -1,3 +1,5 @@
+import UserContainer from "../containers/UserContainer";
+
 export default function UsersPage() {
-  return <h2>User Page</h2>;
+  return <UserContainer />;
 }

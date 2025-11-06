@@ -12,7 +12,7 @@ export const encrypt = (text) => {
     if (!text) return "";
     return CryptoJS.AES.encrypt(text, SECRET_KEY).toString();
   } catch (e) {
-    console.error("🔒 Encryption failed:", e);
+    console.error("Encryption failed:", e);
     return "";
   }
 };
