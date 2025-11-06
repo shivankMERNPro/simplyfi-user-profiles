@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+// Common Component
 import Card from "../commonComponents/Card";
 
+import UserActions from "./UserActions";
 import Avatar from "../commonComponents/Avatar";
 import UserDescription from "./UserDescription";
-import UserActions from "./UserActions";
 
-const UserCard = ({ user, onEdit, onDelete, onFavorite }) => {
+const UserCard = ({ user, onEdit, onDelete, onFavorite, favorited }) => {
   return (
     <Card
       cover={<Avatar username={user.username} />}
@@ -18,7 +20,15 @@ const UserCard = ({ user, onEdit, onDelete, onFavorite }) => {
           website={user.website}
         />
       }
-      actions={[...UserActions({ user, onEdit, onDelete, onFavorite })]}
+      actions={[
+        ...UserActions({
+          user,
+          onEdit,
+          onDelete,
+          onFavorite,
+          favorited,
+        }),
+      ]}
     />
   );
 };

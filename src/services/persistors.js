@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage";
 //--------------------------------------------------
 // Slices import all slice reducers
 //--------------------------------------------------
-import { userSliceReduce } from "./slices/userSlice";
+import { userReducer } from "./slices/userSlice";
 
 //--------------------------------------------------
 // Slice-level persist configs
@@ -12,13 +12,13 @@ import { userSliceReduce } from "./slices/userSlice";
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["profile", "preferences"], // persist only profile and preferences
+  whitelist: ["userData"],
 };
 
 //---------------------------------------------------
 // Wrap slices with persistReducer individually
 //---------------------------------------------------
-const persistedUserReducer = persistReducer(userPersistConfig, userSliceReduce);
+const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
 
 //---------------------------------------------------
 // Export all collections of persisters

@@ -24,5 +24,8 @@ export const userListDataParser = (data) => {
       lat: user.address?.geo?.lat || null,
       lng: user.address?.geo?.lng || null,
     },
+    avatar: `https://avatars.dicebear.com/v2/avataaars/${encodeURIComponent(
+      user.username,
+    )}.svg?options[mood][]=happy`,
   }));
 };

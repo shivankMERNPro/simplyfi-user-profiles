@@ -1,5 +1,5 @@
 {
-  "name": "react-vite-boilerplate",
+  "name": "simplyfi-user-profile",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -26,6 +26,7 @@
     "dompurify": "^3.3.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-hook-form": "^7.66.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.5",
     "redux-persist": "^6.0.0"

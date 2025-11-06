@@ -1,9 +1,9 @@
 /**
  * Simple API Logger Utility
  * ----------------------------------------
- * ✅ Logs requests, responses, and errors clearly in development mode
- * 🚫 Automatically silenced in production
- * 🧩 Used inside baseQueryWithInterceptor and other utilities
+ * Logs requests, responses, and errors clearly in development mode
+ * Automatically silenced in production
+ * Used inside baseQueryWithInterceptor and other utilities
  */
 
 import env from "../consts/env";

@@ -1,44 +1,41 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  profile: null,
-  preferences: {},
-  isLoggedIn: false,
+  userData: [],
 };
 
-//----------------------------------------
-// User Slice
-//    - Handles login/logout
-//    - Updates profile and preferences
-//----------------------------------------
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUserProfile(state, action) {
-      state.profile = action.payload;
-      state.isLoggedIn = true;
+    //---------------------------------
+    // Set initial user data from API
+    //---------------------------------
+    setUserData: (state, action) => {
+      const { data } = action.payload;
+      state.userData = data;
     },
 
-    updateUserPreferences(state, action) {
-      state.preferences = { ...state.preferences, ...action.payload };
+    //---------------------------------
+    // Update a user by id
+    //---------------------------------
+    updateUserData: (state, action) => {
+      const { id, newData } = action.payload;
+      state.userData = state.userData.map((user) =>
+        user.id === id ? { ...user, ...newData } : user,
+      );
     },
 
-    logoutUser(state) {
-      state.profile = null;
-      state.preferences = {};
-      state.isLoggedIn = false;
+    //---------------------------------
+    // Delete a user by id
+    //---------------------------------
+    deleteUserData: (state, action) => {
+      const id = action.payload;
+      state.userData = state.userData.filter((user) => user.id !== id);
     },
   },
 });
 
-//----------------------------------------
-// Export actions to use in components
-//----------------------------------------
-export const { setUserProfile, updateUserPreferences, logoutUser } =
+export const { setUserData, updateUserData, deleteUserData } =
   userSlice.actions;
-
-//-------------------------------------------------------------
-// Export reducer for persisting or combining in rootReducer
-//-------------------------------------------------------------
-export const userSliceReduce = userSlice.reducer;
+export const userReducer = userSlice.reducer;
